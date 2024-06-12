@@ -8,6 +8,8 @@ function checkCookie(to, from, next) {
 
     console.log("check login with cookie")
 
+    next()
+
 }
 
 const todoRouter =
@@ -22,12 +24,20 @@ const todoRouter =
         },
         {
             path: 'list',
-            component: ListPage,
+            component: () => import('../pages/todo/ListPage.vue')
 
         },
         {
             path: 'add',
-            component: AddPage,
+            component: () => import('../pages/todo/AddPage.vue')
+        },
+        {
+            path: 'read/:mno',
+            component: () => import('../pages/todo/ReadPage.vue')
+        },
+        {
+            path: 'modify/:mno',
+            component: () => import('../pages/todo/ModifyPage.vue')
         }
 
     ],
